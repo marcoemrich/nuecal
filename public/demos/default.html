@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<link rel='stylesheet' type='text/css' href='../fullcalendar/fullcalendar.css' />
+<link rel='stylesheet' type='text/css' href='../fullcalendar/fullcalendar.print.css' media='print' />
+<script type='text/javascript' src='../jquery/jquery-1.8.1.min.js'></script>
+<script type='text/javascript' src='../jquery/jquery-ui-1.8.23.custom.min.js'></script>
+<script type='text/javascript' src='../fullcalendar/fullcalendar.min.js'></script>
+<script type='text/javascript' src='../fullcalendar/gcal.js'></script>
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+		
+					
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			editable: true,
+
+			eventClick: function(event) {
+				// opens events in a popup window
+				window.open(event.url, 'gcalevent', 'width=700,height=600');
+				return false;
+			},
+			eventDrop: function(event, delta) {
+				alert(event.title + ' was moved ' + delta + ' days\n' +
+					'(should probably update your database)');
+			},
+				
+			loading: function(bool) {
+				if (bool) $('#loading').show();
+				else $('#loading').hide();
+			},
+			
+			eventSources: [
+
+				// your event source
+				{
+					url: 'http://localhost:3000/events.json',
+					type: 'GET',
+					data: {
+                        a: 'foo'
+					},
+					error: function() {
+						alert('there was an error while fetching events!');
+					},
+					color: 'yellow',   // a non-ajax option
+					textColor: 'black' // a non-ajax option
+				},
+				'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic'
+			]
+		});
+		
+	});
+
+</script>
+<style type='text/css'>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+
+</style>
+</head>
+<body>
+<div id='loading' style='display:none'>loading...</div>
+<div id='calendar'></div>
+<div id='test'></div>
+</body>
+</html>
