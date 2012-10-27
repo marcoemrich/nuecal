@@ -2,9 +2,9 @@ class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
       t.string :title
-      t.boolean :allday
-      t.datetime :startdate
-      t.datetime :enddate
+      t.boolean :allday, default: false
+      t.datetime :start
+      t.datetime :end
       t.string :url
       t.text :summary
       t.text :description

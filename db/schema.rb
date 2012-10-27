@@ -15,16 +15,16 @@ ActiveRecord::Schema.define(:version => 20121027113537) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
-    t.boolean  "allday"
-    t.datetime "startdate"
-    t.datetime "enddate"
+    t.boolean  "allday",      :default => false
+    t.datetime "start"
+    t.datetime "end"
     t.string   "url"
     t.text     "summary"
     t.text     "description"
-    t.string   "locatiuon"
+    t.string   "location"
     t.string   "organizer"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
 end
