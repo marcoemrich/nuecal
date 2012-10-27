@@ -8,6 +8,10 @@ gem 'rails', '3.2.8'
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 
 gem 'active_scaffold'
 
