@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: 
+  allday: 
+  startdate: 
+  enddate: 
+  url: 
+  summary: 
+  description: 
+  organizer_id: 
+  location_id: 
+
+two:
+  title: 
+  allday: 
+  startdate: 
+  enddate: 
+  url: 
+  summary: 
+  description: 
+  organizer_id: 
+  location_id: 
